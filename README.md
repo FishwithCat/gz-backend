@@ -1,0 +1,2 @@
+start mongo 
+> mongod --auth
