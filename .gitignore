@@ -1,3 +1,5 @@
 dist
 src/github.com
 src/gopkg.in
+.DS_Store
+.debug
