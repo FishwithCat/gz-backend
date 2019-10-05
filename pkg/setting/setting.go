@@ -7,8 +7,10 @@ import (
 )
 
 var (
+	DbName     string
 	DbUser     string
 	DbPassword string
+	DbAddress  string
 	JwtSecret  string
 )
 
@@ -19,6 +21,7 @@ func init() {
 		panic(err)
 	}
 	kvStore := client.KV()
+	initConfig(kvStore, "config/database/address", &DbAddress)
 	initConfig(kvStore, "config/database/user", &DbUser)
 	initConfig(kvStore, "config/database/password", &DbPassword)
 	initConfig(kvStore, "config/backend/jwtSecret", &JwtSecret)
