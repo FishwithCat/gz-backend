@@ -8,7 +8,7 @@ import (
 
 func InitRouter() *gin.Engine {
 	router := gin.New()
-	router.GET("/auth", api.GetAuth)
+	router.POST("/auth", api.GetAuth)
 	router.POST("/register", api.AddAuth)
 
 	apiv1 := router.Group("/api/v1/")

@@ -32,18 +32,16 @@ func AddAuth(c *gin.Context) {
 }
 
 func GetAuth(c *gin.Context) {
-	username := c.Query("username")
-	password := c.Query("password")
-
-	// auth := Auth{Username: username, Password: password}
-	isExist, err := models.CheckAuth(username, password)
-	if !isExist {
+	var loginAuth Auth
+	c.BindJSON(&loginAuth)
+	isExist, err := models.CheckAuth(loginAuth.Username, loginAuth.Password)
+	if !isExist || err != nil {
 		c.JSON(http.StatusNetworkAuthenticationRequired, gin.H{
 			"msg": "Auth failed",
 		})
 		return
 	}
-	token, err := util.GenerateToken(username, password)
+	token, err := util.GenerateToken(loginAuth.Username, loginAuth.Password)
 	if err != nil {
 	}
 	c.JSON(http.StatusOK, gin.H{

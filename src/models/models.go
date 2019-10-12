@@ -20,11 +20,11 @@ type Model struct {
 func SetUp() {
 	dbName := "gouzi"
 	var err error
-	// fmt.Printf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
-	// 	setting.DbUser,
-	// 	setting.DbPassword,
-	// 	setting.DbAddress,
-	// 	dbName)
+	fmt.Printf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		setting.DbUser,
+		setting.DbPassword,
+		setting.DbAddress,
+		dbName)
 	db, err = gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		setting.DbUser,
 		setting.DbPassword,

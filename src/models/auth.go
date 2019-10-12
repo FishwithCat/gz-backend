@@ -7,7 +7,11 @@ type Auth struct {
 }
 
 func CheckAuth(username, password string) (bool, error) {
+	if username == "" || password == "" {
+		return false, nil
+	}
 	query := db.Where("username = ? AND password = ?", username, password).First(&Auth{})
+	// grom will save data to the table which of 'auth'
 	return !query.RecordNotFound(), query.Error
 }
 
